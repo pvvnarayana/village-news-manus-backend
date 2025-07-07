@@ -1,0 +1,39 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: village-news-backend
+  
+  datasource:
+    url: jdbc:postgresql://localhost:5432/village_news
+    username: village_news_user
+    password: village # Use the strong password you set above
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+# JWT Configuration
+jwt:
+  secret: my_super_secret_key_1234567890abcd
+  expiration: 86400000 # 24 hours in milliseconds
+
+# File Upload Configuration
+file:
+  upload-dir: ./uploads/videos
+
+logging:
+  level:
+    com.villagenews.backend: DEBUG
+    org.springframework.security: DEBUG
